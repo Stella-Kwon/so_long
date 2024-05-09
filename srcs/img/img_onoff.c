@@ -6,7 +6,7 @@
 /*   By: sukwon <sukwon@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/07 23:22:17 by sukwon            #+#    #+#             */
-/*   Updated: 2024/05/07 23:27:14 by sukwon           ###   ########.fr       */
+/*   Updated: 2024/05/08 17:42:50 by sukwon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,5 +33,11 @@ void	disable_enemy(t_maps *map)
 	img_onoff(map, ENM_F, false);
 	img_onoff(map, ENM_L, false);
 	img_onoff(map, ENM_R, false);
+}
+
+void	disable_exit(t_maps *map)
+{
+	img_onoff(map, EXIT_CLOSE, false);
+	img_onoff(map, EXIT_OPEN, false);
 }
 

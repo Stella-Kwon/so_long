@@ -6,7 +6,7 @@
 /*   By: sukwon <sukwon@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 14:48:00 by skwon2            #+#    #+#             */
-/*   Updated: 2024/05/08 01:56:43 by sukwon           ###   ########.fr       */
+/*   Updated: 2024/05/08 19:06:55 by sukwon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,10 +80,14 @@ typedef struct s_maps
 	mlx_t			*mlx;
 	mlx_texture_t	*texture;
 	mlx_image_t 	*img[NUM_IMG];
-	mlx_image_t 	*ply_nowimg;
+	mlx_image_t		*print_moves;
+	char			*moveprint;
+	int				status;
+	int				ply_nowimg;
 	char			*line;
 	int				moves;
 	int				collectives;
+	int				collect_count;
 }				t_maps;
 
 typedef struct s_count
@@ -112,4 +116,11 @@ void	img_to_window(t_maps *map, t_count *num);
 void	img_onoff(t_maps *map, int i, bool d);
 void	disable_ply(t_maps *map);
 void	disable_enemy(t_maps *map);
+void	player_keyhook(mlx_key_data_t keydata, void* param);
+void	grab_collectives(t_maps *map, int i);
+void	disable_exit(t_maps *map);
+void	print_on_screen(t_maps *map, char *line, int32_t height);
+// void	ending_prints(t_maps *map, int status);
+void	ending_prints(mlx_key_data_t keydata,void* param);
+void	print_moves(t_maps *map);
 #endif

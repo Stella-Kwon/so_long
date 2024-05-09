@@ -17,6 +17,10 @@ SRCS_MANDATORY = srcs/so_long.c \
 			srcs/img/img_load.c\
 			srcs/img/show_img.c\
 			srcs/img/img_onoff.c\
+			srcs/hooks/player_keyhook.c\
+			srcs/hooks/grab_collectives.c\
+			srcs/hooks/prints.c\
+
 
 CFLAGS = -Wall -Wextra -Werror -g -fsanitize=address -oo
 

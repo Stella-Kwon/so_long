@@ -6,7 +6,7 @@
 /*   By: sukwon <sukwon@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/07 11:01:28 by sukwon            #+#    #+#             */
-/*   Updated: 2024/05/07 23:34:26 by sukwon           ###   ########.fr       */
+/*   Updated: 2024/05/08 18:39:11 by sukwon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,9 +64,11 @@ static void	wall_collectives_exit_img(t_maps *map, t_count *num)
 		if (mlx_image_to_window(map->mlx, map->img[EXIT_CLOSE], \
 	num->j * PIXEL, num->i * PIXEL) < 0)
 			errors("Exit_close img to window failed", map);
-	// 	if (mlx_image_to_window(map->mlx, map->img[EXIT_OPEN], \
-	// num->j * PIXEL, num->i * PIXEL) < 0)
-	// 		errors("Exit_open img to window failed", map);
+		if (mlx_image_to_window(map->mlx, map->img[EXIT_OPEN], \
+	num->j * PIXEL, num->i * PIXEL) < 0)
+			errors("Exit_open img to window failed", map);
+		disable_exit(map);
+		img_onoff(map,EXIT_CLOSE, true);
 	}
 	if (map->map[num->i][num->j] == 'C')
 	{
@@ -97,12 +99,12 @@ void	img_to_window(t_maps *map, t_count *num)
 	num->i = 0;
 	while (num->i <= map->height && map->map[num->i])
 	{
-		printf("i : %d\n", num->i);
+		// printf("i : %d\n", num->i);
 		num->j = 0;
 		while (num->j <= map->width && map->map[num->i][num->j])
 		{
-			printf("map->map[num->i][num->j] : %c\n",map->map[num->i][num->j]);
-			printf("j : %d\n", num->j);
+			// printf("map->map[num->i][num->j] : %c\n",map->map[num->i][num->j]);
+			// printf("j : %d\n", num->j);
 			if (mlx_image_to_window(map->mlx, map->img[BG], \
 			num->j * PIXEL, num->i * PIXEL) < 0)
 				errors("Backgroud img to window failed", map);
@@ -112,4 +114,6 @@ void	img_to_window(t_maps *map, t_count *num)
 		}
 		num->i++;
 	}
+	map->print_moves = mlx_put_string(map->mlx, "MOVES : 0", ((map->width / 2) - (ft_strlen("MOVES : 0") / 6.5)) \
+	* PIXEL , (map->height - 3) * PIXEL / 2);
 }

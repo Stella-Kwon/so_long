@@ -6,7 +6,7 @@
 /*   By: sukwon <sukwon@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 14:51:15 by skwon2            #+#    #+#             */
-/*   Updated: 2024/05/08 01:57:20 by sukwon           ###   ########.fr       */
+/*   Updated: 2024/05/08 18:33:36 by sukwon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,8 @@ void	initialize(t_maps *map, t_count *num)
 	map->map_oneline = NULL;
 	map->map = NULL;
 	map->maptmp = NULL;
-	map->line = NULL;
+	map->moveprint = NULL;
+	map->collect_count = 0;
 	map->collectives = 0;
 	map->moves = 0;
 	map->texture = NULL;
@@ -68,7 +69,7 @@ int	main(int argc, char **argv)
 	check_position(&map, &num);
 	generate_imgs(&map);
 	img_to_window(&map, &num);
-	// mlx_key_hook(map.mlx, keyhook, &map);
+	mlx_key_hook(map.mlx, player_keyhook, &map);
 	// // mlx_loop_hook(map.mlx, move_enemy, &map); // 
 	mlx_loop(map.mlx);
 	mlx_terminate(map.mlx);

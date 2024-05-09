@@ -6,8 +6,8 @@
       "type": "lldb",
       "request": "launch",
       "args": [],
-      "cwd": "/Users/kwonsumin/Desktop/so_long/srcs/map_validation",
-      "program": "/Users/kwonsumin/Desktop/so_long/srcs/map_validation/build/Debug/outDebug"
+      "cwd": "/Users/kwonsumin/Desktop/so_long",
+      "program": "/Users/kwonsumin/Desktop/so_long/build/Debug/outDebug"
     }
   ]
 }
