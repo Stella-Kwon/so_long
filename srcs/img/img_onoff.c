@@ -6,7 +6,7 @@
 /*   By: skwon2 <skwon2@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/07 23:22:17 by sukwon            #+#    #+#             */
-/*   Updated: 2024/05/09 17:26:23 by skwon2           ###   ########.fr       */
+/*   Updated: 2024/05/14 15:53:24 by skwon2           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@ void	disable_ply(t_maps *map)
 	img_onoff(map, PLY_L, false);
 	img_onoff(map, PLY_R, false);
 	img_onoff(map, PLY_START, false);
-	img_onoff(map, PLY_FAIL, false);
 }
 
 void	disable_enemy(t_maps *map)

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   player_keyhook.c                                   :+:      :+:    :+:   */
+/*   player_keyhook_bonus.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: skwon2 <skwon2@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/07 13:02:18 by sukwon            #+#    #+#             */
-/*   Updated: 2024/05/14 15:25:05 by skwon2           ###   ########.fr       */
+/*   Created: 2024/05/14 15:34:06 by skwon2            #+#    #+#             */
+/*   Updated: 2024/05/14 15:48:46 by skwon2           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,8 @@ void	move_player_to_direction(t_maps *map)
 	map->img[PLY_L]->instances[0].y = map->player.i * PIXEL;
 	map->img[PLY_R]->instances[0].x = map->player.j * PIXEL;
 	map->img[PLY_R]->instances[0].y = map->player.i * PIXEL;
+    map->img[PLY_FAIL]->instances[0].x = map->player.j * PIXEL;
+	map->img[PLY_FAIL]->instances[0].y = map->player.i * PIXEL;
 }
 
 void	player_move(t_maps *map, t_direct i)
@@ -98,7 +100,7 @@ void	player_move(t_maps *map, t_direct i)
 		map->status = WON;
 		mlx_key_hook(map->mlx, ending_prints, map);
 	}
-	print_moves(map);
+	bonus_print_moves(map);
 }
 
 void	player_keyhook(mlx_key_data_t keydata, void* param)
@@ -121,4 +123,3 @@ void	player_keyhook(mlx_key_data_t keydata, void* param)
 	&& (keydata.action == MLX_REPEAT || keydata.action == MLX_PRESS))
 		player_move(map, RIGHT);
 }
-

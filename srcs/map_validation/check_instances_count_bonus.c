@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check_instances_count.c                            :+:      :+:    :+:   */
+/*   check_instances_count_bonus.c                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: skwon2 <skwon2@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/29 14:34:41 by skwon2            #+#    #+#             */
-/*   Updated: 2024/05/14 15:16:03 by skwon2           ###   ########.fr       */
+/*   Updated: 2024/05/14 15:38:49 by skwon2           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,8 @@ void	eachline_count_sprites(t_maps *map, t_count *num)
 		}
 		else if (map->map[num->i][num->j] == 'C')
 			num->collectives++;
+		else if (map->map[num->i][num->j] == 'X')
+			num->enemies++;
 		else if (map->map[num->i][num->j] == 'E')
 		{
 			map->exit = (t_pos){num->i, num->j};
@@ -50,6 +52,6 @@ void	check_instance_count(t_maps *map, t_count *num)
 	}
 	map->collectives = num->collectives;
 	if (num->exit != 1 || num->player != 1 \
-	|| num->collectives < 1)
+	|| num->collectives < 1 || num->enemies < 1)
 		errors("Not right number of instances : Invalid map", map);
 }

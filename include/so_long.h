@@ -6,7 +6,7 @@
 /*   By: skwon2 <skwon2@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 14:48:00 by skwon2            #+#    #+#             */
-/*   Updated: 2024/05/13 13:58:52 by skwon2           ###   ########.fr       */
+/*   Updated: 2024/05/14 15:53:28 by skwon2           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 
 # include "../libft/libft.h"
 # include <fcntl.h>
-# include <stdio.h> // 나중에 필요없으면 지워
 # include <stdlib.h>
 # include <unistd.h>
 # include "../MLX42/include/MLX42/MLX42.h"
@@ -46,8 +45,8 @@ typedef enum s_img
 	WALL,
 	PLY_L,
 	PLY_R,
-	PLY_B, // up
-	PLY_F, // down
+	PLY_B,
+	PLY_F,
 	ENM_L,
 	ENM_R,
 	ENM_B,
@@ -70,13 +69,13 @@ typedef struct s_pos
 
 typedef struct s_random
 {
-	int32_t	*i; // height
-	int32_t	*j; // width
+	int32_t	*i;
+	int32_t	*j;
 }				t_random;
 
 typedef struct s_maps
 {
-	int32_t			width; // 0부터 시작해
+	int32_t			width;
 	int32_t			height;
 	char			*map_oneline;
 	char			**map;
@@ -127,16 +126,15 @@ char	*all_free(char **res);
 void	img_to_window(t_maps *map, t_count *num);
 void	img_onoff(t_maps *map, int i, bool d);
 void	disable_ply(t_maps *map);
-// void	disable_enemy(t_maps *map);
 void	player_keyhook(mlx_key_data_t keydata, void* param);
 void	grab_collectives(t_maps *map, int i);
 void	disable_exit(t_maps *map);
 void	print_on_screen(t_maps *map, char *line, int32_t height);
-// void	ending_prints(t_maps *map, int status);
 void	ending_prints(mlx_key_data_t keydata,void* param);
 void	print_moves(t_maps *map);
 void	the_next(t_maps *map, t_pos next, t_direct i);
 void	move_enemy(void *param);
 void	disable_enemy(t_maps *map);
 void	the_next(t_maps *map, t_pos next, t_direct i);
+void	bonus_print_moves(t_maps *map);
 #endif

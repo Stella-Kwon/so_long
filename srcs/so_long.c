@@ -6,7 +6,7 @@
 /*   By: skwon2 <skwon2@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 14:51:15 by skwon2            #+#    #+#             */
-/*   Updated: 2024/05/14 15:09:39 by skwon2           ###   ########.fr       */
+/*   Updated: 2024/05/14 15:36:33 by skwon2           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	initialize(t_maps *map, t_count *num)
 	map->maptmp = NULL;
 	map->moveprint = NULL;
 	map->collect_count = 0;
-	// map->enemy_count = 0;
+	map->enemy_count = 0;
 	map->collectives = 0;
 	map->moves = 0;
 	map->texture = NULL;
@@ -29,7 +29,7 @@ void	initialize(t_maps *map, t_count *num)
 	num->collectives = 0;
 	num->player = 0;
 	num->exit = 0;
-	// num->enemies = 0;
+	num->enemies = 0;
 	num->i = 0;
 	num->j = 0;
 }
@@ -51,7 +51,6 @@ int	main(int argc, char **argv)
 	generate_imgs(&map);
 	img_to_window(&map, &num);
 	mlx_key_hook(map.mlx, player_keyhook, &map);
-	// mlx_loop_hook(map.mlx, move_enemy, &map); // it will keep look the function that is given.
 	mlx_loop(map.mlx);
 	mlx_terminate(map.mlx);
 	free_every(&map);

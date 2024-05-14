@@ -4,7 +4,20 @@ LIBFT = ./libft/libft.a
 
 MLX42 = ./MLX42/build/libmlx42.a
 
-SRCS_BONUS = 
+SRCS_BONUS = srcs/so_long.c \
+			srcs/read_map.c \
+			srcs/errors.c \
+			srcs/map_validation/check_extension.c\
+			srcs/map_validation/check_instances_count_bonus.c\
+			srcs/map_validation/check_position.c\
+			srcs/map_validation/check_rantangular.c\
+			srcs/map_validation/check_wall.c\
+			srcs/img/img_load_bonus.c\
+			srcs/img/show_img_bonus.c\
+			srcs/img/img_onoff.c\
+			srcs/hooks/player_keyhook_bonus.c\
+			srcs/hooks/grab_collectives.c\
+			srcs/hooks/prints.c\
 
 SRCS_MANDATORY = srcs/so_long.c \
 			srcs/read_map.c \
@@ -20,7 +33,7 @@ SRCS_MANDATORY = srcs/so_long.c \
 			srcs/hooks/player_keyhook.c\
 			srcs/hooks/grab_collectives.c\
 			srcs/hooks/prints.c\
-			#srcs/hooks/enemy_loophook.c\
+			
 
 CFLAGS = -Wall -Wextra -Werror -g -fsanitize=address -oo
 

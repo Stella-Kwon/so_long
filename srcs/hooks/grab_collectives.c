@@ -6,7 +6,7 @@
 /*   By: skwon2 <skwon2@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/08 10:48:44 by sukwon            #+#    #+#             */
-/*   Updated: 2024/05/09 16:57:50 by skwon2           ###   ########.fr       */
+/*   Updated: 2024/05/14 15:20:23 by skwon2           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,8 @@ void	grab_collectives(t_maps *map, int i)
 
 	c = 0;
 	map->tmp = 0;
-	// printf("collect_count : %d\n", map->collect_count);
 	img_onoff(map, map->ply_nowimg, false);
-	while (c < map->collectives) // check which one is.
+	while (c < map->collectives)
 	{
 		if (map->img[i]->instances[c].x == map->player.j * PIXEL \
 		&& map->img[i]->instances[c].y == map->player.i * PIXEL)
@@ -33,8 +32,6 @@ void	grab_collectives(t_maps *map, int i)
 		}
 		c++;
 	}
-	// map->img[COLLISION]->instances[tmp].enabled = false; // per frame it works, doesnt show any collision img if you do it right after
-	// img_onoff(map, map->ply_nowimg, true);
 	map->map[map->player.i][map->player.j] = '0';
 	map->collect_count++;
 	if (map->collect_count == map->collectives)
