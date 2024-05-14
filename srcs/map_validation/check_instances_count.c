@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_instances_count.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sukwon <sukwon@student.hive.fi>            +#+  +:+       +#+        */
+/*   By: skwon2 <skwon2@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/29 14:34:41 by skwon2            #+#    #+#             */
-/*   Updated: 2024/05/08 16:36:35 by sukwon           ###   ########.fr       */
+/*   Updated: 2024/05/14 15:10:31 by skwon2           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,8 @@ void	eachline_count_sprites(t_maps *map, t_count *num)
 		}
 		else if (map->map[num->i][num->j] == 'C')
 			num->collectives++;
-		else if (map->map[num->i][num->j] == 'X')
-			num->enemies++;
+		// else if (map->map[num->i][num->j] == 'X')
+		// 	num->enemies++;
 		else if (map->map[num->i][num->j] == 'E')
 		{
 			map->exit = (t_pos){num->i, num->j};
@@ -58,6 +58,7 @@ void	check_instance_count(t_maps *map, t_count *num)
 	}
 	// printf("i : %d\n",num->i);
 	map->collectives = num->collectives;
+	// map->enemy_count = num->enemies;
 	// printf("num->enemies : %d\n", num->enemies);
 	// printf("num->collectives : %d\n", num->collectives);
 	// printf("num->exit : %d\n", num->exit);

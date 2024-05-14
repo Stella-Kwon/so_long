@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sukwon <sukwon@student.hive.fi>            +#+  +:+       +#+        */
+/*   By: skwon2 <skwon2@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 14:51:15 by skwon2            #+#    #+#             */
-/*   Updated: 2024/05/08 18:33:36 by sukwon           ###   ########.fr       */
+/*   Updated: 2024/05/14 15:09:39 by skwon2           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ void	initialize(t_maps *map, t_count *num)
 	map->maptmp = NULL;
 	map->moveprint = NULL;
 	map->collect_count = 0;
+	// map->enemy_count = 0;
 	map->collectives = 0;
 	map->moves = 0;
 	map->texture = NULL;
@@ -28,30 +29,10 @@ void	initialize(t_maps *map, t_count *num)
 	num->collectives = 0;
 	num->player = 0;
 	num->exit = 0;
-	num->enemies = 0;
+	// num->enemies = 0;
 	num->i = 0;
 	num->j = 0;
 }
-
-// void keyhook(mlx_key_data_t keydata, void* param)
-// {
-// 	// t_maps *map;
-
-// 	// map = (t_maps *)param;
-// 	(void)param;
-// 	// If we PRESS the 'J' key, print "Hello".
-// 	if (keydata.key == MLX_KEY_J && keydata.action == MLX_PRESS)
-// 		puts("Hello ");
-
-// 	// If we RELEASE the 'K' key, print "World".
-// 	if (keydata.key == MLX_KEY_K && keydata.action == MLX_RELEASE)
-// 		puts("World");
-
-// 	// If we HOLD the 'L' key, print "!".
-// 	if (keydata.key == MLX_KEY_L && (keydata.action == MLX_REPEAT || keydata.action == MLX_PRESS))
-// 		puts("!");
-// }
-
 
 int	main(int argc, char **argv)
 {
@@ -70,7 +51,7 @@ int	main(int argc, char **argv)
 	generate_imgs(&map);
 	img_to_window(&map, &num);
 	mlx_key_hook(map.mlx, player_keyhook, &map);
-	// // mlx_loop_hook(map.mlx, move_enemy, &map); // 
+	// mlx_loop_hook(map.mlx, move_enemy, &map); // it will keep look the function that is given.
 	mlx_loop(map.mlx);
 	mlx_terminate(map.mlx);
 	free_every(&map);

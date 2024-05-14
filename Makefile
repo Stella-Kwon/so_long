@@ -20,12 +20,12 @@ SRCS_MANDATORY = srcs/so_long.c \
 			srcs/hooks/player_keyhook.c\
 			srcs/hooks/grab_collectives.c\
 			srcs/hooks/prints.c\
-
+			#srcs/hooks/enemy_loophook.c\
 
 CFLAGS = -Wall -Wextra -Werror -g -fsanitize=address -oo
 
-MLX42FLAGS = -Ofast -Iinclude -lglfw -L"/opt/homebrew/Cellar/glfw/3.4/lib/" #- for my M1chip
-#MLX42FLAGS = -Iinclude -lglfw -L"/Users/$(USER)/.brew/opt/glfw/lib/"
+#MLX42FLAGS = -Ofast -Iinclude -lglfw -L"/opt/homebrew/Cellar/glfw/3.4/lib/" #- for my M1chip
+MLX42FLAGS = -Ofast -Iinclude -lglfw -L"/Users/$(USER)/.brew/opt/glfw/lib/"
 
 all : .delete .mandatory
 

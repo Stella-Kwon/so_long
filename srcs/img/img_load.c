@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   img_load.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sukwon <sukwon@student.hive.fi>            +#+  +:+       +#+        */
+/*   By: skwon2 <skwon2@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/06 16:52:21 by sukwon            #+#    #+#             */
-/*   Updated: 2024/05/08 00:37:48 by sukwon           ###   ########.fr       */
+/*   Updated: 2024/05/09 17:12:02 by skwon2           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,13 +40,14 @@ void	generate_imgs(t_maps *map)
 	load_img("images/ply_F.png", map, PLY_F);
 	load_img("images/ply_B.png", map, PLY_B);
 	load_img("images/ply_start.png", map, PLY_START);
-	load_img("images/ply_fail.png", map, PLY_FAIL);
 	load_img("images/collective.png", map, COLLECTIVE);
+	load_img("images/exit_close.png", map, EXIT_CLOSE);
+	load_img("images/exit_open.png", map, EXIT_OPEN);
+	load_img("images/yummy.png", map, YUMMY);
+	load_img("images/collision.png", map, COLLISION);
 	load_img("images/enm_B.png", map, ENM_B);
 	load_img("images/enm_F.png", map, ENM_F);
 	load_img("images/enm_L.png", map, ENM_L);
 	load_img("images/enm_R.png", map, ENM_R);
-	load_img("images/exit_close.png", map, EXIT_CLOSE);
-	load_img("images/exit_open.png", map, EXIT_OPEN);
-	load_img("images/collision.png", map, COLLISION);
+	load_img("images/ply_fail.png", map, PLY_FAIL);
 }

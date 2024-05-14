@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sukwon <sukwon@student.hive.fi>            +#+  +:+       +#+        */
+/*   By: skwon2 <skwon2@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 14:48:00 by skwon2            #+#    #+#             */
-/*   Updated: 2024/05/08 19:06:55 by sukwon           ###   ########.fr       */
+/*   Updated: 2024/05/13 13:58:52 by skwon2           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,7 @@ typedef enum s_img
 	COLLISION,
 	PLY_FAIL,
 	PLY_START,
+	YUMMY,
 	NUM_IMG
 }			t_img;
 
@@ -67,6 +68,12 @@ typedef struct s_pos
 	int32_t	j; // width
 }				t_pos;
 
+typedef struct s_random
+{
+	int32_t	*i; // height
+	int32_t	*j; // width
+}				t_random;
+
 typedef struct s_maps
 {
 	int32_t			width; // 0부터 시작해
@@ -75,6 +82,7 @@ typedef struct s_maps
 	char			**map;
 	char			**maptmp;
 	t_pos			player;
+	t_pos			*enemy;
 	t_pos			next;
 	t_pos			exit;
 	mlx_t			*mlx;
@@ -84,8 +92,12 @@ typedef struct s_maps
 	char			*moveprint;
 	int				status;
 	int				ply_nowimg;
+	int				*enm_nowimg;
+	int				*enm_direction;
+	int				enemy_count;
 	char			*line;
 	int				moves;
+	int				tmp;
 	int				collectives;
 	int				collect_count;
 }				t_maps;
@@ -115,7 +127,7 @@ char	*all_free(char **res);
 void	img_to_window(t_maps *map, t_count *num);
 void	img_onoff(t_maps *map, int i, bool d);
 void	disable_ply(t_maps *map);
-void	disable_enemy(t_maps *map);
+// void	disable_enemy(t_maps *map);
 void	player_keyhook(mlx_key_data_t keydata, void* param);
 void	grab_collectives(t_maps *map, int i);
 void	disable_exit(t_maps *map);
@@ -123,4 +135,8 @@ void	print_on_screen(t_maps *map, char *line, int32_t height);
 // void	ending_prints(t_maps *map, int status);
 void	ending_prints(mlx_key_data_t keydata,void* param);
 void	print_moves(t_maps *map);
+void	the_next(t_maps *map, t_pos next, t_direct i);
+void	move_enemy(void *param);
+void	disable_enemy(t_maps *map);
+void	the_next(t_maps *map, t_pos next, t_direct i);
 #endif

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   show_img.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sukwon <sukwon@student.hive.fi>            +#+  +:+       +#+        */
+/*   By: skwon2 <skwon2@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/07 11:01:28 by sukwon            #+#    #+#             */
-/*   Updated: 2024/05/08 18:39:11 by sukwon           ###   ########.fr       */
+/*   Updated: 2024/05/09 17:35:12 by skwon2           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ static void	player_img(t_maps *map, t_count *num)
 }
 
 static void	enemy_img(t_maps *map, t_count *num)
-{	
+{
 	if (mlx_image_to_window(map->mlx, map->img[ENM_R], \
 	num->j * PIXEL, num->i * PIXEL) < 0)
 		errors("Enemy_right img to window failed", map);
@@ -48,11 +48,26 @@ static void	enemy_img(t_maps *map, t_count *num)
 	if (mlx_image_to_window(map->mlx, map->img[ENM_B], \
 	num->j * PIXEL, num->i * PIXEL) < 0)
 		errors("Enemy_back img to window failed", map);
+	if (mlx_image_to_window(map->mlx, map->img[COLLISION], \
+	map->player.j * PIXEL, map->player.i * PIXEL) < 0)
+		errors("Collision img to window failed", map);
+}
+
+static void wall_collectives(t_maps *map, t_count *num)
+{
+	if (map->map[num->i][num->j] == 'C')
+	{
+		if (mlx_image_to_window(map->mlx, map->img[COLLECTIVE], \
+	num->j * PIXEL, num->i * PIXEL) < 0)
+			errors("Collective img to window failed", map);
+		if (mlx_image_to_window(map->mlx, map->img[YUMMY], \
+	num->j * PIXEL, num->i * PIXEL) < 0)
+			errors("Yummy img to window failed", map);
+	}
 }
 
 static void	wall_collectives_exit_img(t_maps *map, t_count *num)
 {
-
 	if (map->map[num->i][num->j] == '1')
 	{
 		if (mlx_image_to_window(map->mlx, map->img[WALL], \
@@ -68,51 +83,76 @@ static void	wall_collectives_exit_img(t_maps *map, t_count *num)
 	num->j * PIXEL, num->i * PIXEL) < 0)
 			errors("Exit_open img to window failed", map);
 		disable_exit(map);
-		img_onoff(map,EXIT_CLOSE, true);
+		img_onoff(map, EXIT_CLOSE, true);
 	}
-	if (map->map[num->i][num->j] == 'C')
-	{
-		if (mlx_image_to_window(map->mlx, map->img[COLLECTIVE], \
-	num->j * PIXEL, num->i * PIXEL) < 0)
-			errors("Collective img to window failed", map);
-	}
+	wall_collectives(map, num);
 }
+
+// static void	ply_enemy_img(t_maps *map, t_count *num)
+// {
+// 	if (map->map[num->i][num->j] == 'P')
+// 	{
+// 		player_img(map, num);
+// 		disable_ply(map);
+// 		img_onoff(map, PLY_START, true);
+// 	}
+// 	if (map->map[num->i][num->j] == 'X')
+// 	{
+// 		enemy_img(map, num);
+// 		disable_enemy(map);
+// 		img_onoff(map, ENM_F, true);
+// 	}
+// }
 
 static void	ply_enemy_img(t_maps *map, t_count *num)
 {
-	if (map->map[num->i][num->j] == 'P')
+	num->i = 0;
+	while (num->i <= map->height && map->map[num->i])
 	{
-		player_img(map, num);
-		disable_ply(map);
-		img_onoff(map, PLY_START, true);
-	}
-	if (map->map[num->i][num->j] == 'X')
-	{
-		enemy_img(map, num);
-		disable_enemy(map);
-		img_onoff(map, ENM_F, true);
+		num->j = 0;
+		while (num->j <= map->width && map->map[num->i][num->j])
+		{
+			if (map->map[num->i][num->j] == 'P')
+			{
+				player_img(map, num);
+				disable_ply(map);
+				img_onoff(map, PLY_START, true);
+			}
+			if (map->map[num->i][num->j] == 'X')
+			{
+				enemy_img(map, num);
+				disable_enemy(map);
+				img_onoff(map, ENM_F, true);
+			}
+			num->j++;
+		}
+		num->i++;
 	}
 }
 
 void	img_to_window(t_maps *map, t_count *num)
 {
+	map->tmp = 0;
 	num->i = 0;
 	while (num->i <= map->height && map->map[num->i])
 	{
-		// printf("i : %d\n", num->i);
 		num->j = 0;
 		while (num->j <= map->width && map->map[num->i][num->j])
 		{
-			// printf("map->map[num->i][num->j] : %c\n",map->map[num->i][num->j]);
-			// printf("j : %d\n", num->j);
 			if (mlx_image_to_window(map->mlx, map->img[BG], \
 			num->j * PIXEL, num->i * PIXEL) < 0)
 				errors("Backgroud img to window failed", map);
 			wall_collectives_exit_img(map, num);
-			ply_enemy_img(map, num);
+			// ply_enemy_img(map, num); //if you put this at the same time as bg and collectibles, when player moves it will go down to the bg as the next background will (z) be build on top of the playe img.  
 			num->j++;
 		}
 		num->i++;
+	}
+	ply_enemy_img(map, num);
+	while (map->tmp < map->collectives) //every yummy png to be not be shown on the window.
+	{
+		map->img[YUMMY]->instances[map->tmp].enabled = false;
+		map->tmp++;
 	}
 	map->print_moves = mlx_put_string(map->mlx, "MOVES : 0", ((map->width / 2) - (ft_strlen("MOVES : 0") / 6.5)) \
 	* PIXEL , (map->height - 3) * PIXEL / 2);

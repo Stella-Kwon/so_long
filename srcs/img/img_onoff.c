@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   img_onoff.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sukwon <sukwon@student.hive.fi>            +#+  +:+       +#+        */
+/*   By: skwon2 <skwon2@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/07 23:22:17 by sukwon            #+#    #+#             */
-/*   Updated: 2024/05/08 17:42:50 by sukwon           ###   ########.fr       */
+/*   Updated: 2024/05/09 17:26:23 by skwon2           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ void	disable_enemy(t_maps *map)
 	img_onoff(map, ENM_F, false);
 	img_onoff(map, ENM_L, false);
 	img_onoff(map, ENM_R, false);
+	img_onoff(map, COLLISION, false);
 }
 
 void	disable_exit(t_maps *map)
