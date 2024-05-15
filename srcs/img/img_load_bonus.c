@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   img_load.c                                         :+:      :+:    :+:   */
+/*   img_load_bonus.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: skwon2 <skwon2@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/06 16:52:21 by sukwon            #+#    #+#             */
-/*   Updated: 2024/05/14 15:56:52 by skwon2           ###   ########.fr       */
+/*   Updated: 2024/05/15 15:41:21 by skwon2           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ void	generate_imgs(t_maps *map)
 	"so_long", false);
 	if (!map->mlx)
 		errors("Fail to initiate window : mlx_init error.", map);
+	map->status = PLAYING;
 	load_img("images/bg.png", map, BG);
 	load_img("images/wall.png", map, WALL);
 	load_img("images/ply_R.png", map, PLY_R);
@@ -46,4 +47,7 @@ void	generate_imgs(t_maps *map)
 	load_img("images/enm_L.png", map, ENM_L);
 	load_img("images/enm_R.png", map, ENM_R);
 	load_img("images/ply_fail.png", map, PLY_FAIL);
+	map->enemy = (t_pos *)calloc(map->enemy_count, sizeof(t_pos));
+	if (!map->enemy)
+		errors("error occurred in calloc in initial_enemy()", map);
 }

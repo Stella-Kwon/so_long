@@ -6,7 +6,7 @@
 /*   By: skwon2 <skwon2@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/14 15:34:06 by skwon2            #+#    #+#             */
-/*   Updated: 2024/05/14 15:48:46 by skwon2           ###   ########.fr       */
+/*   Updated: 2024/05/15 15:52:58 by skwon2           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 void	the_next(t_maps *map, t_pos next, t_direct i)
 {
 	map->next = next;
+	printf("map->enenmy.j : %d\n", next.j);
+	printf("map->next.j : %d\n", map->next.j);
 	if (i == UP)
 		map->next.i--;
 	if (i == DOWN)
@@ -23,6 +25,7 @@ void	the_next(t_maps *map, t_pos next, t_direct i)
 		map->next.j--;
 	if (i == RIGHT)
 		map->next.j++;
+	printf("map->next.j : %d\n", map->next.j);
 }
 
 void	player_img_direction(t_maps *map, t_direct i)

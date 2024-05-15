@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.c                                          :+:      :+:    :+:   */
+/*   so_long_bonus.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: skwon2 <skwon2@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 14:51:15 by skwon2            #+#    #+#             */
-/*   Updated: 2024/05/15 16:01:53 by skwon2           ###   ########.fr       */
+/*   Updated: 2024/05/15 16:02:31 by skwon2           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,9 @@ int	main(int argc, char **argv)
 	generate_imgs(&map);
 	img_to_window(&map, &num);
 	mlx_key_hook(map.mlx, player_keyhook, &map);
+	initial_enemy(&map, &map.random, map.enemy_count);
+	printf("random->i[0]: %d\n",map.random.i[0]);
+	mlx_loop_hook(map.mlx, &move_enemy, &map);
 	mlx_loop(map.mlx);
 	mlx_terminate(map.mlx);
 	free_every(&map);

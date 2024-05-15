@@ -6,7 +6,7 @@
 /*   By: skwon2 <skwon2@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 14:48:00 by skwon2            #+#    #+#             */
-/*   Updated: 2024/05/14 15:53:28 by skwon2           ###   ########.fr       */
+/*   Updated: 2024/05/15 15:27:41 by skwon2           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ typedef enum s_status
 {
 	WON,
 	LOST,
-	ENCOUNTER
+	PLAYING
 }			t_status;
 
 typedef enum s_img
@@ -88,6 +88,7 @@ typedef struct s_maps
 	mlx_texture_t	*texture;
 	mlx_image_t 	*img[NUM_IMG];
 	mlx_image_t		*print_moves;
+	t_random		random;
 	char			*moveprint;
 	int				status;
 	int				ply_nowimg;
@@ -137,4 +138,6 @@ void	move_enemy(void *param);
 void	disable_enemy(t_maps *map);
 void	the_next(t_maps *map, t_pos next, t_direct i);
 void	bonus_print_moves(t_maps *map);
+void	bonus_disable_ply(t_maps *map);
+void	initial_enemy(t_maps *map, t_random *random, int count);
 #endif

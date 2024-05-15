@@ -6,7 +6,7 @@
 /*   By: skwon2 <skwon2@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/07 11:01:28 by sukwon            #+#    #+#             */
-/*   Updated: 2024/05/14 15:45:50 by skwon2           ###   ########.fr       */
+/*   Updated: 2024/05/15 15:49:23 by skwon2           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,24 +88,13 @@ static void	wall_collectives_exit_img(t_maps *map, t_count *num)
 	wall_collectives(map, num);
 }
 
-// static void	ply_enemy_img(t_maps *map, t_count *num)
-// {
-// 	if (map->map[num->i][num->j] == 'P')
-// 	{
-// 		player_img(map, num);
-// 		disable_ply(map);
-// 		img_onoff(map, PLY_START, true);
-// 	}
-// 	if (map->map[num->i][num->j] == 'X')
-// 	{
-// 		enemy_img(map, num);
-// 		disable_enemy(map);
-// 		img_onoff(map, ENM_F, true);
-// 	}
-// }
 
 static void	ply_enemy_img(t_maps *map, t_count *num)
 {
+	int c;
+
+	c = 0;
+	
 	num->i = 0;
 	while (num->i <= map->height && map->map[num->i])
 	{
@@ -115,11 +104,13 @@ static void	ply_enemy_img(t_maps *map, t_count *num)
 			if (map->map[num->i][num->j] == 'P')
 			{
 				player_img(map, num);
-				disable_ply(map);
+				bonus_disable_ply(map);
 				img_onoff(map, PLY_START, true);
 			}
-			if (map->map[num->i][num->j] == 'X')
+			if (map->map[num->i][num->j] == 'X' && c < map->enemy_count)
 			{
+				map->enemy[c] = (t_pos){num->i, num->j};
+				c++;
 				enemy_img(map, num);
 				disable_enemy(map);
 				img_onoff(map, ENM_F, true);
@@ -143,7 +134,6 @@ void	img_to_window(t_maps *map, t_count *num)
 			num->j * PIXEL, num->i * PIXEL) < 0)
 				errors("Backgroud img to window failed", map);
 			wall_collectives_exit_img(map, num);
-			// ply_enemy_img(map, num); //if you put this at the same time as bg and collectibles, when player moves it will go down to the bg as the next background will (z) be build on top of the playe img.  
 			num->j++;
 		}
 		num->i++;

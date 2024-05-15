@@ -4,7 +4,7 @@ LIBFT = ./libft/libft.a
 
 MLX42 = ./MLX42/build/libmlx42.a
 
-SRCS_BONUS = srcs/so_long.c \
+SRCS_BONUS = srcs/so_long_bonus.c \
 			srcs/read_map.c \
 			srcs/errors.c \
 			srcs/map_validation/check_extension.c\
@@ -18,6 +18,7 @@ SRCS_BONUS = srcs/so_long.c \
 			srcs/hooks/player_keyhook_bonus.c\
 			srcs/hooks/grab_collectives.c\
 			srcs/hooks/prints.c\
+			srcs/hooks/enemy_loophook.c\
 
 SRCS_MANDATORY = srcs/so_long.c \
 			srcs/read_map.c \
