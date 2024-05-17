@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   grab_collectives.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: skwon2 <skwon2@student.42.fr>              +#+  +:+       +#+        */
+/*   By: sukwon <sukwon@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/08 10:48:44 by sukwon            #+#    #+#             */
-/*   Updated: 2024/05/14 15:20:23 by skwon2           ###   ########.fr       */
+/*   Updated: 2024/05/16 10:36:24 by sukwon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,11 +24,11 @@ void	grab_collectives(t_maps *map, int i)
 		if (map->img[i]->instances[c].x == map->player.j * PIXEL \
 		&& map->img[i]->instances[c].y == map->player.i * PIXEL)
 			map->img[i]->instances[c].enabled = false;
-		if (map->img[i]->instances[c].x == map->player.j * PIXEL \
-		&& map->img[i]->instances[c].y == map->player.i * PIXEL)
+		if (map->img[YUMMY]->instances[c].x == map->player.j * PIXEL \
+		&& map->img[YUMMY]->instances[c].y == map->player.i * PIXEL)
 		{
 			map->img[YUMMY]->instances[c].enabled = true;
-			map->tmp = c;
+			map->tmp = c;	
 		}
 		c++;
 	}

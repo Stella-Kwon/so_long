@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_position.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: skwon2 <skwon2@student.42.fr>              +#+  +:+       +#+        */
+/*   By: sukwon <sukwon@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/29 14:39:45 by skwon2            #+#    #+#             */
-/*   Updated: 2024/05/14 15:16:16 by skwon2           ###   ########.fr       */
+/*   Updated: 2024/05/16 11:34:41 by sukwon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ int	flood_fill(t_maps *map, t_count *num, int32_t i, int32_t j)
 {
 	if (j < 0 || i < 0)
 		return (0);
-	if (map->maptmp[i][j] == 'E')
+	if (map->maptmp[i][j] == 'E' && num->collectives == map->collectives)
 		num->exit++;
 	if (map->maptmp[i][j] == 'C')
 		num->collectives++;

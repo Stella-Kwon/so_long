@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_instances_count_bonus.c                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: skwon2 <skwon2@student.42.fr>              +#+  +:+       +#+        */
+/*   By: sukwon <sukwon@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/29 14:34:41 by skwon2            #+#    #+#             */
-/*   Updated: 2024/05/15 15:32:44 by skwon2           ###   ########.fr       */
+/*   Updated: 2024/05/16 11:21:02 by sukwon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 void	check_else_char(char c, t_maps *map)
 {
-	if (ft_strchr("01CEP", c) == NULL)
-		errors("Other character than 0 1 C E P : Invalid map", map);
+	if (ft_strchr("01CEXP", c) == NULL)
+		errors("Other character than 0 1 C E X P : Invalid map", map);
 }
 
 void	eachline_count_sprites(t_maps *map, t_count *num)

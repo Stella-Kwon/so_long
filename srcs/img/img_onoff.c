@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   img_onoff.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: skwon2 <skwon2@student.42.fr>              +#+  +:+       +#+        */
+/*   By: sukwon <sukwon@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/07 23:22:17 by sukwon            #+#    #+#             */
-/*   Updated: 2024/05/15 16:07:08 by skwon2           ###   ########.fr       */
+/*   Updated: 2024/05/16 10:14:16 by sukwon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,7 @@ void	disable_enemy(t_maps *map)
 		map->img[ENM_F]->instances[i].enabled = false;
 		map->img[ENM_L]->instances[i].enabled = false;
 		map->img[ENM_R]->instances[i].enabled = false;
+		i++;
 	}
 }
 

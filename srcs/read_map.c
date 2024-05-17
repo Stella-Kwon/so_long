@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   read_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: skwon2 <skwon2@student.42.fr>              +#+  +:+       +#+        */
+/*   By: sukwon <sukwon@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/29 14:37:25 by skwon2            #+#    #+#             */
-/*   Updated: 2024/05/14 15:26:14 by skwon2           ###   ########.fr       */
+/*   Updated: 2024/05/16 11:22:37 by sukwon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,11 @@ void	each_line(t_maps *map, int fd)
 				errors("Map has empty line in the middle", map);
 		}
 	}
+	if (map->map_oneline[ft_strlen(map->map_oneline) - 1] == '\n')
+		errors("Empty line at the end of the map", map);
 	map->map = ft_split(map->map_oneline, '\n');
 	if (!map->map)
-		errors("Split error in the each_line function", map);
+		errors("Split error in the each_line function Or empty map", map);
 }
 
 int	read_map(char *file, t_maps *map)

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   show_img.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: skwon2 <skwon2@student.42.fr>              +#+  +:+       +#+        */
+/*   By: sukwon <sukwon@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/07 11:01:28 by sukwon            #+#    #+#             */
-/*   Updated: 2024/05/14 15:47:33 by skwon2           ###   ########.fr       */
+/*   Updated: 2024/05/16 10:42:58 by sukwon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,4 +109,5 @@ void	img_to_window(t_maps *map, t_count *num)
 		map->img[YUMMY]->instances[map->tmp].enabled = false;
 		map->tmp++;
 	}
+	map->tmp = 0;
 }

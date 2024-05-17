@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   player_keyhook.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: skwon2 <skwon2@student.42.fr>              +#+  +:+       +#+        */
+/*   By: sukwon <sukwon@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/07 13:02:18 by sukwon            #+#    #+#             */
-/*   Updated: 2024/05/15 15:27:55 by skwon2           ###   ########.fr       */
+/*   Updated: 2024/05/16 11:33:47 by sukwon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,9 +52,11 @@ void	player_img_direction(t_maps *map, t_direct i)
 
 void	player_position(t_maps *map, t_direct i)
 {
+	printf("map->tmp : %d\n", map->tmp);
 	if (map->img[YUMMY]->instances[map->tmp].x == map->player.j * PIXEL \
 		&& map->img[YUMMY]->instances[map->tmp].y == map->player.i * PIXEL)
 		map->img[YUMMY]->instances[map->tmp].enabled = false;
+	printf("\ndd\n");
 	if (i == UP)
 		map->player.i--;
 	if (i == DOWN)
@@ -86,6 +88,7 @@ void	player_move(t_maps *map, t_direct i)
 	(map->map[map->next.i][map->next.j] != 'E'))
 	{
 		player_position(map, i);
+		
 		if (map->map[map->player.i][map->player.j] == 'C')
 			grab_collectives(map, COLLECTIVE);
 		move_player_to_direction(map);

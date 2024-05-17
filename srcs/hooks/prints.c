@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   prints.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: skwon2 <skwon2@student.42.fr>              +#+  +:+       +#+        */
+/*   By: sukwon <sukwon@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/07 23:59:32 by sukwon            #+#    #+#             */
-/*   Updated: 2024/05/14 15:59:19 by skwon2           ###   ########.fr       */
+/*   Updated: 2024/05/16 11:27:11 by sukwon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	print_on_screen(t_maps *map, char *line, int32_t height)
 {
-	mlx_put_string(map->mlx, line, ((map->width / 2) - (ft_strlen(line) / 6.5)) \
+	mlx_put_string(map->mlx, line, ((map->width / 2) - (ft_strlen(line) / 7)) \
 	* PIXEL, height * PIXEL / 2);
 }
 
@@ -51,7 +51,7 @@ void	bonus_print_moves(t_maps *map)
 	c = ft_itoa(map->moves);
 	map->moveprint = ft_strjoin("Moves : ", c);
 	map->print_moves = mlx_put_string(map->mlx, map->moveprint, \
-	((map->width / 2) - (ft_strlen(map->moveprint) / 6.5)) \
+	((map->width / 2) - (ft_strlen(map->moveprint) / 7)) \
 	* PIXEL, (map->height - 3) * PIXEL / 2);
 	free(map->moveprint);
 	map->moveprint = NULL;
