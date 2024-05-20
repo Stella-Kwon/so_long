@@ -6,7 +6,7 @@
 /*   By: sukwon <sukwon@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/29 14:39:45 by skwon2            #+#    #+#             */
-/*   Updated: 2024/05/16 11:34:41 by sukwon           ###   ########.fr       */
+/*   Updated: 2024/05/20 14:56:28 by sukwon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ int	flood_fill(t_maps *map, t_count *num, int32_t i, int32_t j)
 {
 	if (j < 0 || i < 0)
 		return (0);
-	if (map->maptmp[i][j] == 'E' && num->collectives == map->collectives)
+	if (map->maptmp[i][j] == 'E')
 		num->exit++;
 	if (map->maptmp[i][j] == 'C')
 		num->collectives++;
@@ -29,6 +29,7 @@ int	flood_fill(t_maps *map, t_count *num, int32_t i, int32_t j)
 		flood_fill(map, num, i, j + 1);
 	if (map->maptmp[i][j - 1] != '1')
 		flood_fill(map, num, i, j - 1);
+	printf(" num->collectives : %d\n",  num->exit);
 	if (num->exit != 1 || num->collectives != map->collectives)
 		return (1);
 	return (0);

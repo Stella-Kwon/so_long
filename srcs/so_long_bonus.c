@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long_bonus.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: skwon2 <skwon2@student.42.fr>              +#+  +:+       +#+        */
+/*   By: sukwon <sukwon@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 14:51:15 by skwon2            #+#    #+#             */
-/*   Updated: 2024/05/15 16:02:31 by skwon2           ###   ########.fr       */
+/*   Updated: 2024/05/20 13:06:41 by sukwon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ void	initialize(t_maps *map, t_count *num)
 	map->map_oneline = NULL;
 	map->map = NULL;
 	map->maptmp = NULL;
+	map->fps = 0;
 	map->moveprint = NULL;
 	map->collect_count = 0;
 	map->enemy_count = 0;
@@ -51,8 +52,7 @@ int	main(int argc, char **argv)
 	generate_imgs(&map);
 	img_to_window(&map, &num);
 	mlx_key_hook(map.mlx, player_keyhook, &map);
-	initial_enemy(&map, &map.random, map.enemy_count);
-	printf("random->i[0]: %d\n",map.random.i[0]);
+	initial_enemy(&map, map.enemy_count);
 	mlx_loop_hook(map.mlx, &move_enemy, &map);
 	mlx_loop(map.mlx);
 	mlx_terminate(map.mlx);

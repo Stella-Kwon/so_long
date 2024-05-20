@@ -6,7 +6,7 @@
 /*   By: sukwon <sukwon@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/07 23:59:32 by sukwon            #+#    #+#             */
-/*   Updated: 2024/05/16 11:27:11 by sukwon           ###   ########.fr       */
+/*   Updated: 2024/05/20 14:38:40 by sukwon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,10 +26,23 @@ void	ending_prints(mlx_key_data_t keydata, void *param)
 	if (map->status == WON)
 		print_on_screen(map, "YOU WON! AWESOME WORK", map->height + 1);
 	if (map->status == LOST)
-		print_on_screen(map, "YOU LOST! TRY AGIAN......", map->height);
+		print_on_screen(map, "YOU LOST! TRY AGIAN......", map->height + 1);
 	print_on_screen(map, "\"ESC to exit\"", map->height - 1);
 	if (keydata.key == MLX_KEY_ESCAPE)
 		mlx_close_window(map->mlx);
+}
+
+void	ending_prints_lost(void *param)
+{
+	t_maps	*map;
+
+	map = (t_maps *)param;
+	if (map->status == WON)
+		print_on_screen(map, "YOU WON! AWESOME WORK", map->height + 1);
+	if (map->status == LOST)
+		print_on_screen(map, "YOU LOST! TRY AGIAN......", map->height);
+	print_on_screen(map, "\"ESC to exit\"", map->height - 1);
+
 }
 
 void	print_moves(t_maps *map)

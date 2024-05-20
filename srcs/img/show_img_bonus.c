@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   show_img_bonus.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: skwon2 <skwon2@student.42.fr>              +#+  +:+       +#+        */
+/*   By: sukwon <sukwon@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/07 11:01:28 by sukwon            #+#    #+#             */
-/*   Updated: 2024/05/15 15:49:23 by skwon2           ###   ########.fr       */
+/*   Updated: 2024/05/20 14:08:06 by sukwon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,9 +48,9 @@ static void	enemy_img(t_maps *map, t_count *num)
 	if (mlx_image_to_window(map->mlx, map->img[ENM_B], \
 	num->j * PIXEL, num->i * PIXEL) < 0)
 		errors("Enemy_back img to window failed", map);
-	if (mlx_image_to_window(map->mlx, map->img[COLLISION], \
-	map->player.j * PIXEL, map->player.i * PIXEL) < 0)
-		errors("Collision img to window failed", map);
+	// if (mlx_image_to_window(map->mlx, map->img[COLLISION], \
+	// num->j * PIXEL, num->i * PIXEL) < 0)
+	// 	errors("Collision img to window failed", map);
 }
 
 static void wall_collectives(t_maps *map, t_count *num)
@@ -110,10 +110,10 @@ static void	ply_enemy_img(t_maps *map, t_count *num)
 			if (map->map[num->i][num->j] == 'X' && c < map->enemy_count)
 			{
 				map->enemy[c] = (t_pos){num->i, num->j};
-				c++;
+				// disable_enemy(map, c);
 				enemy_img(map, num);
-				disable_enemy(map);
-				img_onoff(map, ENM_F, true);
+				c++;
+				// img_onoff(map, ENM_F, true);
 			}
 			num->j++;
 		}

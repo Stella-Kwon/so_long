@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: skwon2 <skwon2@student.42.fr>              +#+  +:+       +#+        */
+/*   By: sukwon <sukwon@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 14:48:00 by skwon2            #+#    #+#             */
-/*   Updated: 2024/05/15 15:27:41 by skwon2           ###   ########.fr       */
+/*   Updated: 2024/05/20 14:36:42 by sukwon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,12 +67,6 @@ typedef struct s_pos
 	int32_t	j; // width
 }				t_pos;
 
-typedef struct s_random
-{
-	int32_t	*i;
-	int32_t	*j;
-}				t_random;
-
 typedef struct s_maps
 {
 	int32_t			width;
@@ -88,7 +82,7 @@ typedef struct s_maps
 	mlx_texture_t	*texture;
 	mlx_image_t 	*img[NUM_IMG];
 	mlx_image_t		*print_moves;
-	t_random		random;
+	t_pos			*random;
 	char			*moveprint;
 	int				status;
 	int				ply_nowimg;
@@ -98,6 +92,7 @@ typedef struct s_maps
 	char			*line;
 	int				moves;
 	int				tmp;
+	double			fps;
 	int				collectives;
 	int				collect_count;
 }				t_maps;
@@ -135,9 +130,10 @@ void	ending_prints(mlx_key_data_t keydata,void* param);
 void	print_moves(t_maps *map);
 void	the_next(t_maps *map, t_pos next, t_direct i);
 void	move_enemy(void *param);
-void	disable_enemy(t_maps *map);
+void	disable_enemy(t_maps *map, int i);
 void	the_next(t_maps *map, t_pos next, t_direct i);
 void	bonus_print_moves(t_maps *map);
 void	bonus_disable_ply(t_maps *map);
-void	initial_enemy(t_maps *map, t_random *random, int count);
+void	initial_enemy(t_maps *map, int count);
+void	ending_prints_lost(void *param);
 #endif
