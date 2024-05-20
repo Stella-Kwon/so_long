@@ -6,7 +6,7 @@
 /*   By: sukwon <sukwon@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 14:48:00 by skwon2            #+#    #+#             */
-/*   Updated: 2024/05/20 14:36:42 by sukwon           ###   ########.fr       */
+/*   Updated: 2024/05/20 16:34:35 by sukwon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,8 +63,8 @@ typedef enum s_img
 
 typedef struct s_pos
 {
-	int32_t	i; // height
-	int32_t	j; // width
+	int32_t	i;
+	int32_t	j;
 }				t_pos;
 
 typedef struct s_maps
@@ -86,8 +86,6 @@ typedef struct s_maps
 	char			*moveprint;
 	int				status;
 	int				ply_nowimg;
-	int				*enm_nowimg;
-	int				*enm_direction;
 	int				enemy_count;
 	char			*line;
 	int				moves;
@@ -122,11 +120,11 @@ char	*all_free(char **res);
 void	img_to_window(t_maps *map, t_count *num);
 void	img_onoff(t_maps *map, int i, bool d);
 void	disable_ply(t_maps *map);
-void	player_keyhook(mlx_key_data_t keydata, void* param);
+void	player_keyhook(mlx_key_data_t keydata, void *param);
 void	grab_collectives(t_maps *map, int i);
 void	disable_exit(t_maps *map);
 void	print_on_screen(t_maps *map, char *line, int32_t height);
-void	ending_prints(mlx_key_data_t keydata,void* param);
+void	ending_prints(mlx_key_data_t keydata, void *param);
 void	print_moves(t_maps *map);
 void	the_next(t_maps *map, t_pos next, t_direct i);
 void	move_enemy(void *param);
@@ -135,5 +133,8 @@ void	the_next(t_maps *map, t_pos next, t_direct i);
 void	bonus_print_moves(t_maps *map);
 void	bonus_disable_ply(t_maps *map);
 void	initial_enemy(t_maps *map, int count);
-void	ending_prints_lost(void *param);
+void	encount_enemy(t_maps *map);
+void	enemy_generator(t_maps *map, int count);
+void	ply_enemy_img(t_maps *map, t_count *num);
+void	wall_collectives_exit_img(t_maps *map, t_count *num);
 #endif

@@ -19,6 +19,8 @@ SRCS_BONUS = srcs/so_long_bonus.c \
 			srcs/hooks/grab_collectives.c\
 			srcs/hooks/prints.c\
 			srcs/hooks/enemy_loophook.c\
+			srcs/hooks/enemy_move.c\
+			srcs/img/show_img_bonus2.c\
 
 SRCS_MANDATORY = srcs/so_long.c \
 			srcs/read_map.c \

@@ -6,11 +6,38 @@
 /*   By: sukwon <sukwon@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 14:51:15 by skwon2            #+#    #+#             */
-/*   Updated: 2024/05/20 13:06:41 by sukwon           ###   ########.fr       */
+/*   Updated: 2024/05/20 16:15:47 by sukwon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/so_long.h"
+
+void	initial_enemy(t_maps *map, int count)
+{
+	int	i;
+	int	j;
+	int	tmp;
+
+	i = 0;
+	j = 0;
+	tmp = 0;
+	map->random = (t_pos *)calloc(count, sizeof(t_pos));
+	if (!map->random)
+		errors("error occurred in calloc in initial_enemy()", map);
+	while (map->map[i][j] && i <= map->height && tmp <= count)
+	{
+		while (map->map[i][j] && j <= map->width && tmp <= count)
+		{
+			if (map->map[i][j] == 'X')
+			{
+				map->enemy[tmp] = (t_pos){i, j};
+				tmp++;
+			}
+			j++;
+		}
+		i++;
+	}
+}
 
 void	initialize(t_maps *map, t_count *num)
 {

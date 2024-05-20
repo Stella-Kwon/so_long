@@ -6,7 +6,7 @@
 /*   By: sukwon <sukwon@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/06 16:52:21 by sukwon            #+#    #+#             */
-/*   Updated: 2024/05/20 13:12:55 by sukwon           ###   ########.fr       */
+/*   Updated: 2024/05/20 15:52:22 by sukwon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,6 @@ void	generate_imgs(t_maps *map)
 	load_img("images/exit_close.png", map, EXIT_CLOSE);
 	load_img("images/exit_open.png", map, EXIT_OPEN);
 	load_img("images/yummy.png", map, YUMMY);
-	// load_img("images/collision.png", map, COLLISION);
 	load_img("images/enm_B.png", map, ENM_B);
 	load_img("images/enm_F.png", map, ENM_F);
 	load_img("images/enm_L.png", map, ENM_L);

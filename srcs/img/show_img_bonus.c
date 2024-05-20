@@ -6,7 +6,7 @@
 /*   By: sukwon <sukwon@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/07 11:01:28 by sukwon            #+#    #+#             */
-/*   Updated: 2024/05/20 14:08:06 by sukwon           ###   ########.fr       */
+/*   Updated: 2024/05/20 16:34:30 by sukwon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static void	player_img(t_maps *map, t_count *num)
 {
-	if (mlx_image_to_window(map->mlx, map->img[PLY_START],\
+	if (mlx_image_to_window(map->mlx, map->img[PLY_START], \
 	num->j * PIXEL, num->i * PIXEL) < 0)
 		errors("Player_start img to window failed", map);
 	if (mlx_image_to_window(map->mlx, map->img[PLY_FAIL], \
@@ -48,12 +48,9 @@ static void	enemy_img(t_maps *map, t_count *num)
 	if (mlx_image_to_window(map->mlx, map->img[ENM_B], \
 	num->j * PIXEL, num->i * PIXEL) < 0)
 		errors("Enemy_back img to window failed", map);
-	// if (mlx_image_to_window(map->mlx, map->img[COLLISION], \
-	// num->j * PIXEL, num->i * PIXEL) < 0)
-	// 	errors("Collision img to window failed", map);
 }
 
-static void wall_collectives(t_maps *map, t_count *num)
+static void	wall_collectives(t_maps *map, t_count *num)
 {
 	if (map->map[num->i][num->j] == 'C')
 	{
@@ -66,7 +63,7 @@ static void wall_collectives(t_maps *map, t_count *num)
 	}
 }
 
-static void	wall_collectives_exit_img(t_maps *map, t_count *num)
+void	wall_collectives_exit_img(t_maps *map, t_count *num)
 {
 	if (map->map[num->i][num->j] == '1')
 	{
@@ -88,13 +85,11 @@ static void	wall_collectives_exit_img(t_maps *map, t_count *num)
 	wall_collectives(map, num);
 }
 
-
-static void	ply_enemy_img(t_maps *map, t_count *num)
+void	ply_enemy_img(t_maps *map, t_count *num)
 {
-	int c;
+	int	c;
 
 	c = 0;
-	
 	num->i = 0;
 	while (num->i <= map->height && map->map[num->i])
 	{
@@ -110,40 +105,11 @@ static void	ply_enemy_img(t_maps *map, t_count *num)
 			if (map->map[num->i][num->j] == 'X' && c < map->enemy_count)
 			{
 				map->enemy[c] = (t_pos){num->i, num->j};
-				// disable_enemy(map, c);
 				enemy_img(map, num);
 				c++;
-				// img_onoff(map, ENM_F, true);
 			}
 			num->j++;
 		}
 		num->i++;
 	}
-}
-
-void	img_to_window(t_maps *map, t_count *num)
-{
-	map->tmp = 0;
-	num->i = 0;
-	while (num->i <= map->height && map->map[num->i])
-	{
-		num->j = 0;
-		while (num->j <= map->width && map->map[num->i][num->j])
-		{
-			if (mlx_image_to_window(map->mlx, map->img[BG], \
-			num->j * PIXEL, num->i * PIXEL) < 0)
-				errors("Backgroud img to window failed", map);
-			wall_collectives_exit_img(map, num);
-			num->j++;
-		}
-		num->i++;
-	}
-	ply_enemy_img(map, num);
-	while (map->tmp < map->collectives) //every yummy png to be not be shown on the window.
-	{
-		map->img[YUMMY]->instances[map->tmp].enabled = false;
-		map->tmp++;
-	}
-	map->print_moves = mlx_put_string(map->mlx, "MOVES : 0", ((map->width / 2) - (ft_strlen("MOVES : 0") / 6.5)) \
-	* PIXEL , (map->height - 3) * PIXEL / 2);
 }
