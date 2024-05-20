@@ -143,6 +143,11 @@ void	check_right_spot(t_maps *map, int count, int i)
 		// encount_enemy(map);
 		move_enemy_to_direction(map, count);
 		// enemy_img_direction(map,count,i);
+		if (map->collect_count == map->collectives)
+		{
+			img_onoff(map, EXIT_CLOSE, false);
+			img_onoff(map, EXIT_OPEN, true);
+		}
 	}
 	// printf("over\n");
 	}
