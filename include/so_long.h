@@ -6,7 +6,7 @@
 /*   By: skwon2 <skwon2@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 14:48:00 by skwon2            #+#    #+#             */
-/*   Updated: 2024/05/21 13:44:50 by skwon2           ###   ########.fr       */
+/*   Updated: 2024/05/21 14:16:59 by skwon2           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@
 # define PIXEL 32
 # define FAILURE -1
 # define SUCCESS 1
-
 
 typedef enum s_direct
 {
@@ -80,7 +79,7 @@ typedef struct s_maps
 	t_pos			exit;
 	mlx_t			*mlx;
 	mlx_texture_t	*texture;
-	mlx_image_t 	*img[NUM_IMG];
+	mlx_image_t		*img[NUM_IMG];
 	mlx_image_t		*print_moves;
 	t_pos			*random;
 	char			*moveprint;
