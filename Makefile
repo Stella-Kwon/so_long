@@ -11,6 +11,7 @@ SRCS_BONUS = srcs/so_long_bonus.c \
 			srcs/map_validation/check_instances_count_bonus.c\
 			srcs/map_validation/check_position.c\
 			srcs/map_validation/check_rantangular.c\
+			srcs/map_validation/map_too_big.c\
 			srcs/map_validation/check_wall.c\
 			srcs/img/img_load_bonus.c\
 			srcs/img/show_img_bonus.c\
@@ -19,6 +20,8 @@ SRCS_BONUS = srcs/so_long_bonus.c \
 			srcs/hooks/grab_collectives.c\
 			srcs/hooks/prints.c\
 			srcs/hooks/enemy_loophook.c\
+			srcs/hooks/enemy_move.c\
+			srcs/img/show_img_bonus2.c\
 
 SRCS_MANDATORY = srcs/so_long.c \
 			srcs/read_map.c \
@@ -27,6 +30,7 @@ SRCS_MANDATORY = srcs/so_long.c \
 			srcs/map_validation/check_instances_count.c\
 			srcs/map_validation/check_position.c\
 			srcs/map_validation/check_rantangular.c\
+			srcs/map_validation/map_too_big.c\
 			srcs/map_validation/check_wall.c\
 			srcs/img/img_load.c\
 			srcs/img/show_img.c\
@@ -48,6 +52,7 @@ all : .delete .mandatory
 	@rm -f .timestaps .delete_bo
 
 .mandatory: ${SRCS_MANDATORY} $(LIBFT) $(MLX42)
+	@touch .mandatory
 	@cc $(CFLAGS) ${SRCS_MANDATORY} -o ${NAME} $(LIBFT) $(MLX42) $(MLX42FLAGS)
 	@echo "\n$(Yellow)-----SO_LONG HAS BEEN CREATED-----$(Ending)\n"
 
@@ -72,9 +77,10 @@ bonus : .delete_bo .timestaps
 	@rm -f .mandatory .delete
 
 .timestaps : ${SRCS_BONUS} $(LIBFT) $(MLX42)
+	@touch .timestaps
 	@cc $(CFLAGS) ${SRCS_BONUS} -o ${NAME} $(LIBFT) $(MLX42) $(MLX42FLAGS)
 	@echo "\n$(GREEN)-----SO_LONG(BONUS) HAS BEEN CREATED-----$(Ending)\n"
-
+ 
 clean:
 	@make clean -C libft
 	@make clean -C MLX42/build

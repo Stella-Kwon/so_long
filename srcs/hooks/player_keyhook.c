@@ -3,27 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   player_keyhook.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sukwon <sukwon@student.hive.fi>            +#+  +:+       +#+        */
+/*   By: skwon2 <skwon2@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/07 13:02:18 by sukwon            #+#    #+#             */
-/*   Updated: 2024/05/20 15:19:38 by sukwon           ###   ########.fr       */
+/*   Updated: 2024/05/21 12:56:10 by skwon2           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/so_long.h"
-
-void	the_next(t_maps *map, t_pos next, t_direct i)
-{
-	map->next = next;
-	if (i == UP)
-		map->next.i--;
-	if (i == DOWN)
-		map->next.i++;
-	if (i == LEFT)
-		map->next.j--;
-	if (i == RIGHT)
-		map->next.j++;
-}
 
 void	player_img_direction(t_maps *map, t_direct i)
 {
@@ -82,15 +69,15 @@ void	player_move(t_maps *map, t_direct i)
 {
 	the_next(map, map->player, i);
 	player_img_direction(map, i);
-	if (map->map[map->next.i][map->next.j] != '1' && \
-	(map->map[map->next.i][map->next.j] != 'E'))
+	if (map->map[map->next.i][map->next.j] != '1')
 	{
 		player_position(map, i);
 		if (map->map[map->player.i][map->player.j] == 'C')
 			grab_collectives(map, COLLECTIVE);
 		move_player_to_direction(map);
 	}
-	if (map->map[map->next.i][map->next.j] == 'E' && map->collect_count == map->collectives)
+	if (map->map[map->next.i][map->next.j] == 'E' \
+	&& map->collect_count == map->collectives)
 	{
 		player_position(map, i);
 		move_player_to_direction(map);
@@ -101,7 +88,7 @@ void	player_move(t_maps *map, t_direct i)
 	print_moves(map);
 }
 
-void	player_keyhook(mlx_key_data_t keydata, void* param)
+void	player_keyhook(mlx_key_data_t keydata, void *param)
 {
 	t_maps	*map;
 
@@ -121,4 +108,3 @@ void	player_keyhook(mlx_key_data_t keydata, void* param)
 	&& (keydata.action == MLX_REPEAT || keydata.action == MLX_PRESS))
 		player_move(map, RIGHT);
 }
-

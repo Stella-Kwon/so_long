@@ -6,11 +6,24 @@
 /*   By: sukwon <sukwon@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/08 10:48:44 by sukwon            #+#    #+#             */
-/*   Updated: 2024/05/16 10:36:24 by sukwon           ###   ########.fr       */
+/*   Updated: 2024/05/20 16:21:58 by sukwon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/so_long.h"
+
+void	the_next(t_maps *map, t_pos next, t_direct i)
+{
+	map->next = next;
+	if (i == UP)
+		map->next.i--;
+	if (i == DOWN)
+		map->next.i++;
+	if (i == LEFT)
+		map->next.j--;
+	if (i == RIGHT)
+		map->next.j++;
+}
 
 void	grab_collectives(t_maps *map, int i)
 {
@@ -28,7 +41,7 @@ void	grab_collectives(t_maps *map, int i)
 		&& map->img[YUMMY]->instances[c].y == map->player.i * PIXEL)
 		{
 			map->img[YUMMY]->instances[c].enabled = true;
-			map->tmp = c;	
+			map->tmp = c;
 		}
 		c++;
 	}

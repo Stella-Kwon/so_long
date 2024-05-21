@@ -6,7 +6,7 @@
 /*   By: skwon2 <skwon2@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 14:51:15 by skwon2            #+#    #+#             */
-/*   Updated: 2024/05/15 16:01:53 by skwon2           ###   ########.fr       */
+/*   Updated: 2024/05/21 13:59:04 by skwon2           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ int	main(int argc, char **argv)
 		errors("No map", &map);
 	check_file_extension(argv[1], &map);
 	read_map(argv[1], &map);
+	map_too_big(&map);
 	check_rectangular(&map);
 	check_wall(&map);
 	check_instance_count(&map, &num);

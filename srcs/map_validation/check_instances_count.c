@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_instances_count.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: skwon2 <skwon2@student.42.fr>              +#+  +:+       +#+        */
+/*   By: sukwon <sukwon@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/29 14:34:41 by skwon2            #+#    #+#             */
-/*   Updated: 2024/05/14 15:16:03 by skwon2           ###   ########.fr       */
+/*   Updated: 2024/05/20 16:32:45 by sukwon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ void	eachline_count_sprites(t_maps *map, t_count *num)
 
 void	check_instance_count(t_maps *map, t_count *num)
 {
-	while (map->map[num->i]&& num->i <= map->height)
+	while (map->map[num->i] && num->i <= map->height)
 	{
 		eachline_count_sprites(map, num);
 		num->i++;

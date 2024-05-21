@@ -6,7 +6,7 @@
 /*   By: sukwon <sukwon@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/07 11:01:28 by sukwon            #+#    #+#             */
-/*   Updated: 2024/05/16 10:42:58 by sukwon           ###   ########.fr       */
+/*   Updated: 2024/05/20 16:35:43 by sukwon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static void	player_img(t_maps *map, t_count *num)
 {
-	if (mlx_image_to_window(map->mlx, map->img[PLY_START],\
+	if (mlx_image_to_window(map->mlx, map->img[PLY_START], \
 	num->j * PIXEL, num->i * PIXEL) < 0)
 		errors("Player_start img to window failed", map);
 	if (mlx_image_to_window(map->mlx, map->img[PLY_R], \
@@ -44,7 +44,7 @@ static void	wall_collectives(t_maps *map, t_count *num)
 	}
 }
 
-static void	wall_collectives_exit_img(t_maps *map, t_count *num)
+void	wall_collectives_exit_img(t_maps *map, t_count *num)
 {
 	if (map->map[num->i][num->j] == '1')
 	{
@@ -66,7 +66,7 @@ static void	wall_collectives_exit_img(t_maps *map, t_count *num)
 	wall_collectives(map, num);
 }
 
-static void	ply_enemy_img(t_maps *map, t_count *num)
+void	ply_enemy_img(t_maps *map, t_count *num)
 {
 	num->i = 0;
 	while (num->i <= map->height && map->map[num->i])

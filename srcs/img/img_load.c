@@ -6,7 +6,7 @@
 /*   By: skwon2 <skwon2@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/06 16:52:21 by sukwon            #+#    #+#             */
-/*   Updated: 2024/05/15 15:41:18 by skwon2           ###   ########.fr       */
+/*   Updated: 2024/05/21 13:31:02 by skwon2           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	load_img(const char *img_path, t_maps *map, t_img i)
 void	generate_imgs(t_maps *map)
 {
 	map->mlx = mlx_init((map->width + 1) * PIXEL, (map->height + 1) * PIXEL, \
-	"so_long", false);
+	"so_long", true);
 	if (!map->mlx)
 		errors("Fail to initiate window : mlx_init error.", map);
 	load_img("images/bg.png", map, BG);

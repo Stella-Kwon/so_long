@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   errors.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: skwon2 <skwon2@student.42.fr>              +#+  +:+       +#+        */
+/*   By: sukwon <sukwon@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 14:57:13 by skwon2            #+#    #+#             */
-/*   Updated: 2024/05/09 15:29:53 by skwon2           ###   ########.fr       */
+/*   Updated: 2024/05/20 15:51:31 by sukwon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,11 +36,6 @@ void	free_every(t_maps *map)
 		all_free(map->maptmp);
 	if (map->map_oneline)
 		free(map->map_oneline);
-	// double free errors
-	// if (map->texture) 
-	// 	mlx_delete_texture(map->texture);
-	// if (map->mlx)
-	// 	mlx_terminate(map->mlx);
 }
 
 void	errors(char *mes, t_maps *map)
