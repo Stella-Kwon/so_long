@@ -99,8 +99,9 @@ void	player_move(t_maps *map, t_direct i)
 	// printf("map->player.i : %d\n", map->player.i);
 	// printf("map->player.j : %d\n\n", map->player.j);
 	player_img_direction(map, i);
-	if (map->map[map->next.i][map->next.j] != '1' && \
-	(map->map[map->next.i][map->next.j] != 'E'))
+	if (map->map[map->next.i][map->next.j] != '1' )
+		// this one will block E at everytime but now i chaged to EXITplace has to be passed as well if it is closed mode
+		//&& (map->map[map->next.i][map->next.j] != 'E'))
 	{
 		player_position(map, i);
 		// printf("collect_count : %d\n", map->collectives);
