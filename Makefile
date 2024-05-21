@@ -50,6 +50,7 @@ all : .delete .mandatory
 	@rm -f .timestaps .delete_bo
 
 .mandatory: ${SRCS_MANDATORY} $(LIBFT) $(MLX42)
+	@touch .mandatory
 	@cc $(CFLAGS) ${SRCS_MANDATORY} -o ${NAME} $(LIBFT) $(MLX42) $(MLX42FLAGS)
 	@echo "\n$(Yellow)-----SO_LONG HAS BEEN CREATED-----$(Ending)\n"
 
@@ -74,9 +75,10 @@ bonus : .delete_bo .timestaps
 	@rm -f .mandatory .delete
 
 .timestaps : ${SRCS_BONUS} $(LIBFT) $(MLX42)
+	@touch .timestaps
 	@cc $(CFLAGS) ${SRCS_BONUS} -o ${NAME} $(LIBFT) $(MLX42) $(MLX42FLAGS)
 	@echo "\n$(GREEN)-----SO_LONG(BONUS) HAS BEEN CREATED-----$(Ending)\n"
-
+ 
 clean:
 	@make clean -C libft
 	@make clean -C MLX42/build
