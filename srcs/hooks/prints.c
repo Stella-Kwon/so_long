@@ -12,6 +12,7 @@
 
 #include "../include/so_long.h"
 
+
 void	print_on_screen(t_maps *map, char *line, int32_t height)
 {
 	mlx_put_string(map->mlx, line, ((map->width / 2) - (ft_strlen(line) / 7)) \
@@ -32,19 +33,6 @@ void	ending_prints(mlx_key_data_t keydata, void *param)
 		mlx_close_window(map->mlx);
 }
 
-void	ending_prints_lost(void *param)
-{
-	t_maps	*map;
-
-	map = (t_maps *)param;
-	if (map->status == WON)
-		print_on_screen(map, "YOU WON! AWESOME WORK", map->height + 1);
-	if (map->status == LOST)
-		print_on_screen(map, "YOU LOST! TRY AGIAN......", map->height);
-	print_on_screen(map, "\"ESC to exit\"", map->height - 1);
-
-}
-
 void	print_moves(t_maps *map)
 {
 	char	*c;
@@ -52,7 +40,10 @@ void	print_moves(t_maps *map)
 	c = ft_itoa(map->moves);
 	map->moveprint = ft_strjoin("Moves : ", c);
 	ft_printf("%s\n", map->moveprint);
+	free(map->moveprint);
+	free(c);
 	map->moveprint = NULL;
+	c = NULL;
 }
 
 void	bonus_print_moves(t_maps *map)
@@ -67,6 +58,7 @@ void	bonus_print_moves(t_maps *map)
 	((map->width / 2) - (ft_strlen(map->moveprint) / 7)) \
 	* PIXEL, (map->height - 3) * PIXEL / 2);
 	free(map->moveprint);
+	free(c);
 	map->moveprint = NULL;
+	c = NULL;
 }
-
