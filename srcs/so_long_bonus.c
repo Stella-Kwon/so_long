@@ -6,7 +6,7 @@
 /*   By: skwon2 <skwon2@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 14:51:15 by skwon2            #+#    #+#             */
-/*   Updated: 2024/05/21 13:44:55 by skwon2           ###   ########.fr       */
+/*   Updated: 2024/05/23 12:49:58 by skwon2           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ void	initial_enemy(t_maps *map, int count)
 void	initialize(t_maps *map, t_count *num)
 {
 	map->width = 0;
-	map->height = 0;
+	map->height = -1;
 	map->map_oneline = NULL;
 	map->map = NULL;
 	map->maptmp = NULL;

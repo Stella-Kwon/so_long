@@ -40,7 +40,7 @@ SRCS_MANDATORY = srcs/so_long.c \
 			srcs/hooks/prints.c\
 			
 
-CFLAGS = -Wall -Wextra -Werror -g -fsanitize=address -oo
+CFLAGS = -Wall -Wextra -Werror -g -oo
 
 MLX42FLAGS = -Ofast -Iinclude -lglfw -L"/Users/$(USER)/.brew/opt/glfw/lib/"
 

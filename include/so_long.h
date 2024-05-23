@@ -6,7 +6,7 @@
 /*   By: skwon2 <skwon2@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 14:48:00 by skwon2            #+#    #+#             */
-/*   Updated: 2024/05/21 14:16:59 by skwon2           ###   ########.fr       */
+/*   Updated: 2024/05/23 13:54:42 by skwon2           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,6 +92,7 @@ typedef struct s_maps
 	double			fps;
 	int				collectives;
 	int				collect_count;
+	char			*oneline_tmp;
 }				t_maps;
 
 typedef struct s_count
@@ -115,7 +116,6 @@ void	errors(char *mes, t_maps *map);
 int		read_map(char *file, t_maps *map);
 void	generate_imgs(t_maps *map);
 void	free_every(t_maps *map);
-char	*all_free(char **res);
 void	img_to_window(t_maps *map, t_count *num);
 void	img_onoff(t_maps *map, int i, bool d);
 void	disable_ply(t_maps *map);
@@ -137,4 +137,5 @@ void	enemy_generator(t_maps *map, int count);
 void	ply_enemy_img(t_maps *map, t_count *num);
 void	wall_collectives_exit_img(t_maps *map, t_count *num);
 void	map_too_big(t_maps *map);
+void	free_null(char **res);
 #endif
