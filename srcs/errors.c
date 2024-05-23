@@ -12,36 +12,50 @@
 
 #include "../include/so_long.h"
 
-char	*all_free(char **res)
+static char	**all_free(char ***res, int number)
 {
 	int	i;
 
 	i = 0;
-	while (res[i])
+	if (!(*res) || !(*res)[i])
+		return (NULL);
+	while ((*res)[i] && i <= number)
 	{
-		free (res[i]);
-		res[i] = NULL;
+		printf("map->map[%d] : %s\n", i, (*res)[i]);
+		free ((*res)[i]);
+		(*res)[i] = NULL;
 		i++;
 	}
-	free(res);
-	res = NULL;
+	free(*res);
+	*res = NULL;
 	return (NULL);
+}
+
+void	free_null(char **res)
+{
+	free(*res);
+	*res = NULL;
 }
 
 void	free_every(t_maps *map)
 {
-	if (map->map)
-		all_free(map->map);
+	if (map->line)
+		free_null(&map->line);
+	if (map->oneline_tmp)
+		free_null(&map->oneline_tmp);
+	if (map->map) 
+		all_free(&map->map, map->height);
 	if (map->maptmp)
-		all_free(map->maptmp);
+		all_free(&map->maptmp, map->height);
 	if (map->map_oneline)
-		free(map->map_oneline);
-	// double free errors
-	// if (map->texture) 
-	// 	mlx_delete_texture(map->texture);
-	// if (map->mlx)
-	// 	mlx_terminate(map->mlx);
+		free_null(&map->map_oneline);
+	if (map->random)
+		free_null(&map->random);
+	if (map->enemy) 
+		free_null(&map->enemy);
 }
+
+
 
 void	errors(char *mes, t_maps *map)
 {
@@ -55,3 +69,4 @@ void	errors(char *mes, t_maps *map)
 	free_every(map);
 	exit(FAILURE);
 }
+
