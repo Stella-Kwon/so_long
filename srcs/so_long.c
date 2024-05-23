@@ -15,10 +15,11 @@
 void	initialize(t_maps *map, t_count *num)
 {
 	map->width = 0;
-	map->height = 0;
+	map->height = -1;
 	map->map_oneline = NULL;
 	map->map = NULL;
 	map->maptmp = NULL;
+	map->random = NULL;
 	map->moveprint = NULL;
 	map->collect_count = 0;
 	map->enemy_count = 0;
@@ -44,6 +45,7 @@ int	main(int argc, char **argv)
 		errors("No map", &map);
 	check_file_extension(argv[1], &map);
 	read_map(argv[1], &map);
+	map_too_big(&map);
 	check_rectangular(&map);
 	check_wall(&map);
 	check_instance_count(&map, &num);
@@ -56,3 +58,4 @@ int	main(int argc, char **argv)
 	free_every(&map);
 	return (0);
 }
+
