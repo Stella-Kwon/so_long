@@ -23,7 +23,6 @@
 # define FAILURE -1
 # define SUCCESS 1
 
-
 typedef enum s_direct
 {
 	UP,
@@ -63,8 +62,8 @@ typedef enum s_img
 
 typedef struct s_pos
 {
-	int32_t	i; // height
-	int32_t	j; // width
+	int32_t	i;
+	int32_t	j;
 }				t_pos;
 
 typedef struct s_maps
@@ -80,14 +79,12 @@ typedef struct s_maps
 	t_pos			exit;
 	mlx_t			*mlx;
 	mlx_texture_t	*texture;
-	mlx_image_t 	*img[NUM_IMG];
+	mlx_image_t		*img[NUM_IMG];
 	mlx_image_t		*print_moves;
 	t_pos			*random;
 	char			*moveprint;
 	int				status;
 	int				ply_nowimg;
-	int				*enm_nowimg;
-	int				*enm_direction;
 	int				enemy_count;
 	char			*line;
 	int				moves;
@@ -95,6 +92,7 @@ typedef struct s_maps
 	double			fps;
 	int				collectives;
 	int				collect_count;
+	char			*oneline_tmp;
 }				t_maps;
 
 typedef struct s_count
@@ -118,15 +116,14 @@ void	errors(char *mes, t_maps *map);
 int		read_map(char *file, t_maps *map);
 void	generate_imgs(t_maps *map);
 void	free_every(t_maps *map);
-char	*all_free(char **res);
 void	img_to_window(t_maps *map, t_count *num);
 void	img_onoff(t_maps *map, int i, bool d);
 void	disable_ply(t_maps *map);
-void	player_keyhook(mlx_key_data_t keydata, void* param);
+void	player_keyhook(mlx_key_data_t keydata, void *param);
 void	grab_collectives(t_maps *map, int i);
 void	disable_exit(t_maps *map);
 void	print_on_screen(t_maps *map, char *line, int32_t height);
-void	ending_prints(mlx_key_data_t keydata,void* param);
+void	ending_prints(mlx_key_data_t keydata, void *param);
 void	print_moves(t_maps *map);
 void	the_next(t_maps *map, t_pos next, t_direct i);
 void	move_enemy(void *param);
@@ -135,5 +132,10 @@ void	the_next(t_maps *map, t_pos next, t_direct i);
 void	bonus_print_moves(t_maps *map);
 void	bonus_disable_ply(t_maps *map);
 void	initial_enemy(t_maps *map, int count);
-void	ending_prints_lost(void *param);
+void	encount_enemy(t_maps *map);
+void	enemy_generator(t_maps *map, int count);
+void	ply_enemy_img(t_maps *map, t_count *num);
+void	wall_collectives_exit_img(t_maps *map, t_count *num);
+void	map_too_big(t_maps *map);
+void	free_null(char **res);
 #endif
