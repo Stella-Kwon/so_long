@@ -33,8 +33,11 @@ static char	**all_free(char ***res, int number)
 
 void	free_null(char **res)
 {
-	free(*res);
-	*res = NULL;
+  	if (*res)
+  	{
+		free(*res);
+		*res = NULL;
+	}
 }
 
 void	free_every(t_maps *map)
@@ -50,9 +53,9 @@ void	free_every(t_maps *map)
 	if (map->map_oneline)
 		free_null(&map->map_oneline);
 	if (map->random)
-		free_null(&map->random);
+		free_null((char **)&map->random);
 	if (map->enemy) 
-		free_null(&map->enemy);
+		free_null((char **)&map->enemy);
 }
 
 
