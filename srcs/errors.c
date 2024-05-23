@@ -6,7 +6,7 @@
 /*   By: skwon2 <skwon2@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 14:57:13 by skwon2            #+#    #+#             */
-/*   Updated: 2024/05/23 14:04:47 by skwon2           ###   ########.fr       */
+/*   Updated: 2024/05/23 14:10:53 by skwon2           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ void	free_every(t_maps *map)
 		free_null(&map->line);
 	if (map->oneline_tmp)
 		free_null(&map->oneline_tmp);
-	if (map->map) 
+	if (map->map)
 		all_free(&map->map, map->height);
 	if (map->maptmp)
 		all_free(&map->maptmp, map->height);
@@ -53,11 +53,9 @@ void	free_every(t_maps *map)
 		free_null(&map->map_oneline);
 	if (map->random)
 		free_null((char **)&map->random);
-	if (map->enemy) 
+	if (map->enemy)
 		free_null((char **)&map->enemy);
 }
-
-
 
 void	errors(char *mes, t_maps *map)
 {
